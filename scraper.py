@@ -134,7 +134,7 @@ class HouseDetails:
 
         return self.details
 
-files = sorted(glob("links/propertyfinder*.pkl"))
+files = sorted(glob("links/propertyfinder*.pkl"))[::-1]
 # files = glob("*.pkl")
 with tqdm(total=len(files)) as progress:
     for file in files:
@@ -146,7 +146,7 @@ with tqdm(total=len(files)) as progress:
             links = pickle.load(open(file, "rb"))
             for link in links:
                 local_itr+=1
-                time.sleep(8)
+                time.sleep(12)
                 something = HouseDetails(link)
                 something.get_content()
                 houses.append(something.scrape())
